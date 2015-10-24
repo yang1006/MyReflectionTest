@@ -5,7 +5,7 @@ import java.lang.reflect.Modifier;
 
 /**
  * Created by MagicYang on 2015/10/22.
- * »ñÈ¡¶ÔÏóµÄ³ÉÔ±º¯Êý
+ * èŽ·å–æ–¹æ³•
  */
 public class GetMethod {
 
@@ -14,12 +14,12 @@ public class GetMethod {
         Class temp = r.getClass();
         String className = temp.getName();
 
-        /**getMethods()£ºÓÃÓÚ»ñÈ¡ÀàµÄËùÓÐµÄpublicÐÞÊÎÓòµÄ³ÉÔ±·½·¨£¬°üÀ¨´Ó¸¸Àà¼Ì³ÐµÄpublic·½·¨ºÍÊµÏÖ½Ó¿ÚµÄpublic·½·¨£»*/
+        /**ç”¨äºŽèŽ·å–ç±»çš„æ‰€æœ‰çš„publicä¿®é¥°åŸŸçš„æˆå‘˜æ–¹æ³•ï¼ŒåŒ…æ‹¬ä»Žçˆ¶ç±»ç»§æ‰¿çš„publicæ–¹æ³•å’Œå®žçŽ°æŽ¥å£çš„publicæ–¹æ³•*/
         Method[] methods = temp.getMethods();
-        /**getDeclaredMethods()£ºÓÃÓÚ»ñÈ¡ÔÚµ±Ç°ÀàÖÐ¶¨ÒåµÄËùÓÐµÄ³ÉÔ±·½·¨ºÍÊµÏÖµÄ½Ó¿Ú·½·¨£¬²»°üÀ¨´Ó¸¸Àà¼Ì³ÐµÄ·½·¨¡£*/
+        /**getDeclaredMethods()ç”¨äºŽèŽ·å–åœ¨å½“å‰ç±»ä¸­å®šä¹‰çš„æ‰€æœ‰çš„æˆå‘˜æ–¹æ³•å’Œå®žçŽ°çš„æŽ¥å£æ–¹æ³•ï¼Œä¸åŒ…æ‹¬ä»Žçˆ¶ç±»ç»§æ‰¿çš„æ–¹æ³•ã€‚*/
         Method[] dmethods = temp.getDeclaredMethods();
         printMethod(methods, className);
-
+        System.out.println("getDeclaredMethods--->");
         printMethod(dmethods, className);
 
     }
@@ -27,20 +27,20 @@ public class GetMethod {
     private static void printMethod(Method[] methods, String classname){
 
         for (int i = 0; i < methods.length; i++){
-            /**·½·¨ÐÞÊÎ·û*/
+            /**èŽ·å–ä¿®é¥°ç¬¦*/
             int mod = methods[i].getModifiers();
             System.out.print(Modifier.toString(mod) + " ");
 
-            /**·µ»ØÀàÐÍ*/
+            /**èŽ·å–è¿”å›žç±»åž‹*/
             System.out.print(methods[i].getReturnType().getName());
 
-            /**·½·¨Ãû³Æ*/
+            /**æ–¹æ³•å*/
             System.out.print(" "+methods[i].getName()+"(");
 
-            /**·½·¨²ÎÊýÁÐ±í*/
+            /**å‚æ•°ç±»åž‹*/
             Class[] paraTypes = methods[i].getParameterTypes();
             for (int j = 0; j < paraTypes.length; j++){
-                System.out.print(paraTypes[i].getName());
+                System.out.print(paraTypes[j].getName());
                 if (paraTypes.length < j+1){
                     System.out.print(",");
                 }

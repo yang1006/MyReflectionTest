@@ -5,7 +5,7 @@ import java.lang.reflect.Modifier;
 
 /**
  * Created by MagicYang on 2015/10/22.
- * »ñÈ¡¶ÔÏóµÄ³ÉÔ±±äÁ¿
+ * è·å–æˆå‘˜å˜é‡
  */
 public class GetFields {
 
@@ -13,11 +13,12 @@ public class GetFields {
         Class temp = r.getClass();
         String className = temp.getName();
 
+        /**è·å–publicçš„æˆå‘˜å˜é‡*/
         Field[] fields = temp.getFields();
-
+        /**è·å–æ‰€æœ‰æˆå‘˜å˜é‡*/
         Field[] dfields = temp.getDeclaredFields();
 
-        printFields(fields ,temp ,r);
+//        printFields(fields ,temp ,r);
 
         printFields(dfields, temp ,r);
 
@@ -27,22 +28,22 @@ public class GetFields {
         try {
             for (int i = 0; i < fields.length; i++) {
 
-                /**ÊôĞÔµÄÀàĞÍ*/
+                /**æˆå‘˜å˜é‡çš„ç±»å‹*/
                 Class type = fields[i].getType();
 
-                /**ĞŞÊÎ·û*/
+                /**æˆå‘˜å˜é‡çš„ä¿®é¥°ç¬¦*/
                 int mod = fields[i].getModifiers();
 
-                /**»ñÈ¡ÊôĞÔµÄÖµ*/
-                Field f = temp.getField(fields[i].getName());
-//                Field f = fields[i];  //ÕâÑùÒ²ÊÇ¿ÉÒÔµÄ°É
+                /**æˆå‘˜å˜é‡çš„å€¼*/
+                Field f = temp.getDeclaredField(fields[i].getName());
+//                Field f = fields[i];
                 f.setAccessible(true);
                 Object value = f.get(r);
-                /**ÅĞ¶ÏÖµÊÇ·ñ³õÊ¼»¯*/
-                if (value == null) {//Î´³õÊ¼»¯
+                /**åˆ¤æ–­æ˜¯å¦åˆå§‹åŒ–*/
+                if (value == null) {//æœªåˆå§‹åŒ–
                     System.out.println(Modifier.toString(mod) + " " + type.getName() + " "
                             + fields[i].getName());
-                } else {//ÒÑ¾­³õÊ¼»¯
+                } else {//å·²ç»åˆå§‹åŒ–
                     System.out.println(Modifier.toString(mod) + " " + type.getName() + " "
                             + fields[i].getName() + " = " + value.toString());
                 }

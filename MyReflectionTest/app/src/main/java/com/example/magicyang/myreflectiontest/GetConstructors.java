@@ -5,7 +5,7 @@ import java.lang.reflect.Modifier;
 
 /**
  * Created by MagicYang on 2015/10/22.
- * »ñÈ¡¶ÔÏóµÄ¹¹Ôìº¯Êı
+ * è·å–æ„é€ å‡½æ•°
  */
 public class GetConstructors {
 
@@ -13,8 +13,9 @@ public class GetConstructors {
         Class temp = r.getClass();
         String className = temp.getName();
         try {
-            /**»ñÈ¡ReflectionTest ¶ÔÏóµÄ¹¹Ôì·½·¨*/
+        /**æ‰€æœ‰æ„é€ å‡½æ•°*/
             Constructor[] theDConstructors = temp.getDeclaredConstructors();
+            /**æ‰€æœ‰public çš„æ„é€ å‡½æ•°*/
             Constructor[] theConstructors = temp.getConstructors();
 
             printConstructors(theDConstructors, className);
@@ -28,10 +29,10 @@ public class GetConstructors {
     private static void printConstructors(Constructor[] constructors, String className) {
         try {
             for (int i = 0; i < constructors.length; i++) {
-                /**»ñÈ¡º¯ÊıĞŞÊÎ·û*/
+                /**è·å–ä¿®é¥°ç¬¦*/
                 int mod = constructors[i].getModifiers();
                 System.out.print(Modifier.toString(mod) + className + "(");
-                /**»ñÈ¡º¯Êı²ÎÊıÀàĞÍ*/
+                /**è·å–å‚æ•°ç±»å‹*/
                 Class[] paraTypes = constructors[i].getParameterTypes();
                 for (int j = 0; j < paraTypes.length; j++) {
                     System.out.print(paraTypes[j].getName());

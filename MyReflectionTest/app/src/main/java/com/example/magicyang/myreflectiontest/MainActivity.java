@@ -13,18 +13,36 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ReflectionTest rt = new ReflectionTest();
-        getConstructorsTest(rt);
+//        getConstructorsTest(rt);
+//        getMethodTest(rt);
+//        getFieldsTest(rt);
+        LoadMethodTest();
     }
 
-    private void getConstructorsTest(ReflectionTest rt){
+    /**
+     * 获取构造函数
+     */
+    private void getConstructorsTest(ReflectionTest rt) {
 
         GetConstructors.getReflectionConstructons(rt);
     }
 
-    private void getMethodTest(ReflectionTest rt){
+    /**
+     * 获取方法
+     */
+    private void getMethodTest(ReflectionTest rt) {
 
         GetMethod.getReflectionMethod(rt);
-
     }
 
+    private void getFieldsTest(ReflectionTest rt) {
+
+        GetFields.getReflectionFields(rt);
+    }
+
+    private void LoadMethodTest() {
+        Object result = LoadMethod.LoadAMethod("" + ReflectionTest.class.getName(), "adc",
+                          new String[]{"int", "String"}, new String[]{"55", "执行函数"});
+        System.out.println(result.toString());
+    }
 }

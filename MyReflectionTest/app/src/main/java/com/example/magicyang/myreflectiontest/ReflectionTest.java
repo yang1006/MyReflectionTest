@@ -20,7 +20,7 @@ public class ReflectionTest extends Object{
     }
 
     public int adc(int id, String name){
-        Log.e("Magic-->","id&name-->"+id +"-"+name);
+        System.out.println("id&name-->" + id + "-" + name);
         return 0;
     }
 
@@ -30,7 +30,7 @@ public class ReflectionTest extends Object{
 
     @Override
     public String toString() {
-        Log.e("Magic","ReflectionTest.toString");
+        System.out.println("ReflectionTest.toString");
         return "";
     }
 }
